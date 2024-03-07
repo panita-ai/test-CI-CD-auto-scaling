@@ -31,12 +31,10 @@ jobs:
       - name: Update Auto Scaling group and terminate previous instances
         run: |
           aws autoscaling update-auto-scaling-group --auto-scaling-group-name auto-scaling-reinel \
-              --launch-configuration-name mock-project-template \
               --desired-capacity 0
 
           # Wait for old instances to terminate
           sleep 300
 
           aws autoscaling update-auto-scaling-group --auto-scaling-group-name auto-scaling-reinel \
-              --launch-configuration-name mock-project-template \
               --desired-capacity 3
