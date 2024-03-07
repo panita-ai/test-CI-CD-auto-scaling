@@ -37,4 +37,4 @@ jobs:
           sleep 300
 
           aws autoscaling update-auto-scaling-group --auto-scaling-group-name auto-scaling-reinel \
-              --desired-capacity 3
+              --desired-capacity 1
