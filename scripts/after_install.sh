@@ -1,4 +1,4 @@
-rm -rf /home/ubuntu/nodejs
+sudo rm -rf /home/ubuntu/nodejs
 mkdir /home/ubuntu/nodejs
 cd /home/ubuntu/nodejs
 
