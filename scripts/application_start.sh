@@ -6,5 +6,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm use 18.16.0
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
-pm2 stop all
+pm2 stop 0
+pm2 kill 0
 pm2 start /home/ubuntu/nodejs/app.js
