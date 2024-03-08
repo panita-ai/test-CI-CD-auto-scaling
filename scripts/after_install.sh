@@ -1,4 +1,3 @@
-sudo rm -rf /home/ubuntu/nodejs
 mkdir /home/ubuntu/nodejs
 cd /home/ubuntu/nodejs
 export NVM_DIR="$HOME/.nvm"
