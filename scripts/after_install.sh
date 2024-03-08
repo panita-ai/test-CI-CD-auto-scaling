@@ -1,4 +1,4 @@
-mkdir /home/ec2-user/nodejs
-cd /home/ec2-user/nodejs
+mkdir /home/ubuntu/nodejs
+cd /home/ubuntu/nodejs
 
 sudo npm install
