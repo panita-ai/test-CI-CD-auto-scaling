@@ -13,4 +13,4 @@ sudo apt-get install iptables -y
 # sudo find /home/ubuntu/test -type f -delete
 
 #echo "Installing & starting pm2"
-sudo npm install pm2 -g
+npm install pm2 -g
