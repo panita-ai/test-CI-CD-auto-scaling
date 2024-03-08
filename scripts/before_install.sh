@@ -17,5 +17,5 @@ sudo npm install forever -g
 # Clean working folder
 # sudo find /home/ubuntu/test -type f -delete
 
-echo "Installing & starting pm2"
-sudo npm install pm2@latest -g
+#echo "Installing & starting pm2"
+sudo npm install pm2 -g
