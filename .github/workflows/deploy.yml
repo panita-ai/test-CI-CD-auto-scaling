@@ -8,6 +8,9 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
+    outputs:
+      artifact_key: ${{ steps.package.outputs.artifact_key }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -36,8 +39,11 @@ jobs:
           timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
           artifact_key=my-artifact-$timestamp.zip
           aws s3 cp app.zip s3://${{ secrets.BUCKET_NAME }}/$artifact_key
+          echo "::set-output name=artifact_key::$artifact_key"
+
+      - name: Create deployment
+        run: |
           aws deploy create-deployment \
             --application-name ${{ secrets.APPLICATION_NAME }} \
             --deployment-group-name ${{ secrets.DEPLOYMENT_GROUP_NAME }} \
-            --s3-location bucket=${{ secrets.BUCKET_NAME }},key=$artifact_key,bundleType=zip
-
+            --s3-location bucket=${{ secrets.BUCKET_NAME }},key=${{ steps.package.outputs.artifact_key }},bundleType=zip
