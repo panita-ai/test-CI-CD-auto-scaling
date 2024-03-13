@@ -1,5 +1,4 @@
 mkdir /home/ubuntu/nodejs
-sudo chown -R $USER /home/ubuntu/nodejs
 cd /home/ubuntu/nodejs
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
