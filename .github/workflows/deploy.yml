@@ -39,4 +39,4 @@ jobs:
         run: |
           timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
           artifact_key=my-artifact-$timestamp.zip
-          aws s3 cp app.zip s3://${{ BUCKET_NAME }}/$artifact_key
+          aws s3 cp app.zip s3://${{ secrets.BUCKET_NAME }}/$artifact_key
