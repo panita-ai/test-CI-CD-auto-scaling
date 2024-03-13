@@ -15,7 +15,7 @@ app.get("/", async function (req, res) {
     dummyData = await fs.readFile(filePath);
   }
   const json = JSON.parse(dummyData);
-  res.json({ message: "Success!", data: json });
+  res.json({ message: "Successsssssss!", data: json });
 });
 
 app.post("/data", async function (req, res) {

@@ -28,13 +28,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
-      - name: Update Auto Scaling group and terminate previous instances
+      - name: Build and package application
         run: |
-          aws autoscaling update-auto-scaling-group --auto-scaling-group-name auto-scaling-reinel-2 \
-              --desired-capacity 0
+          # Your build commands here
+          npm install
+          # Package your application into a ZIP file
+          zip -r app.zip ./*
 
-          # Wait for old instances to terminate
-          sleep 300
-
-          aws autoscaling update-auto-scaling-group --auto-scaling-group-name auto-scaling-reinel-2 \
-              --desired-capacity 1
+      - name: Package application
+        run: |
+          timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
+          artifact_key=my-artifact-$timestamp.zip
+          aws s3 cp app.zip s3://${{ BUCKET_NAME }}/$artifact_key
