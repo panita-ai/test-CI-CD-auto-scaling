@@ -8,8 +8,6 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
-    outputs:
-      artifact_key: ${{ steps.package.outputs.artifact_key }}
 
     steps:
       - name: Checkout code
@@ -35,6 +33,7 @@ jobs:
           zip -r app.zip ./*
 
       - name: Package application
+        id: test-id
         run: |
           timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
           artifact_key=my-artifact-$timestamp.zip
@@ -46,4 +45,4 @@ jobs:
           aws deploy create-deployment \
             --application-name ${{ secrets.APPLICATION_NAME }} \
             --deployment-group-name ${{ secrets.DEPLOYMENT_GROUP_NAME }} \
-            --s3-location bucket=${{ secrets.BUCKET_NAME }},key=${{ steps.package.outputs.artifact_key }},bundleType=zip
+            --s3-location bucket=${{ secrets.BUCKET_NAME }},key=${{ steps.test-id.outputs.artifact_key }},bundleType=zip
