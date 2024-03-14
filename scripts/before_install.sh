@@ -15,5 +15,4 @@ pm2 stop all
 pm2 kill all
 
 # Clean working folder
-sudo chown -R $USER /home/ubuntu/nodejs
-sudo find  /home/ubuntu/nodejs -type f -delete
+sudo rm -rf  /home/ubuntu/nodejs
